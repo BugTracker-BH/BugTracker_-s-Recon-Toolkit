@@ -1,28 +1,50 @@
-<div align="center">
-  <h1>BugTracker_'s Python Recon Toolkit </h1>
-  <p>A fast, modular reconnaissance CLI to quickly map out external attack surfaces.</p>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
-</div>
+# Python Recon Toolkit
 
----
-
-## Overview
-This **Python Recon Toolkit** is a lightweight, zero-bloat command-line interface designed to rapidly evaluate targets during initial reconnaissance phases. Built on an entirely modular architecture, it leverages raw sockets, custom DNS resolvers, and rich terminal formatting to execute deep infrastructure scans without explicitly relying on heavy, bloated internet frameworks.
+A powerful, modular reconnaissance command-line interface designed to quickly evaluate targets and enumerate attack surfaces. This toolkit leverages precise terminal outputs to perform deep scans on remote architectures.
 
 ## Features
-* **Subdomain Enumeration** ([subs](cci:1://file:///c:/Users/Kinan/Downloads/ReconToolkit/main.py:13:0-17:27)): Brute-forces 100+ standard subdomains using robust, fallback Cloudflare/Google DNS resolvers to bypass local network configuration drops.
-* **Header Analysis** ([headers](cci:1://file:///c:/Users/Kinan/Downloads/ReconToolkit/main.py:19:0-23:25)): Interrogates server HTTP responses and actively flags any missing modern security implementations (HSTS, CSP, X-Frame-Options, etc.).
-* **Whois Lookups** ([who](cci:1://file:///c:/Users/Kinan/Downloads/ReconToolkit/main.py:25:0-29:21)): Queries raw TCP socket registries directly (bypassing heavy `pip` modules) to map domain administrative blocks.
-* **Active Port Scanning** ([scan](cci:1://file:///c:/Users/Kinan/Downloads/ReconToolkit/main.py:31:0-35:18)): Aggressively scans open host boundaries to identify listening TCP sockets and heuristically predicts underlying application services (HTTP, HTTPS, SSH, MySQL, etc.).
+- **Subdomain Enumeration**: Brute-force over 100+ standard subdomains to discover hidden infrastructure components.
+- **Header Analysis**: Interrogate server headers and instantly flag missing strict security implementations (HSTS, CSP, etc.).
+- **Whois Lookups**: Query raw data from internet registries to map domains back to their administrative blocks.
+- **Port Scanning**: Identify listening tcp sockets across the host boundary and guess their underlying services.
+- **Rich Terminal Output**: Renders data across beautifully responsive tables and panels.
 
 ## Requirements
-This toolkit uses modern Python formatting via the `rich` library to structure clean, aesthetic terminal outputs.
-
 ```txt
-click==8.1.7
-colorama==0.4.6
-dnspython==2.6.1
-requests==2.31.0
-rich==13.7.1
+requests
+dnspython
+colorama
+click
+rich
+```
+
+## Installation
+```bash
+git clone https://github.com/your-username/recon-toolkit.git
+cd recon-toolkit
+pip install -r requirements.txt
+```
+
+## Usage
+
+### Subdomain Enumeration
+```bash
+python main.py subs google.com
+```
+
+### Security Header Analysis
+```bash
+python main.py headers https://github.com
+```
+
+### WHOIS Deep Query
+```bash
+python main.py who example.com
+```
+
+### Active Port Scanning
+```bash
+python main.py scan 192.168.1.1
+```
